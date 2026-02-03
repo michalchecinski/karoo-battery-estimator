@@ -1,0 +1,29 @@
+name: Bug Report
+description: File a bug report
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! You can also use the [feedback board](https://karoo-battery-estimator.sleekplan.app).
+        Please note that this form is for bug reports only. For feature requests and enhancements, please use the Feature Request issue template.
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps To Reproduce
+      description: How can we reproduce the behavior.
+      value: |
+        1. Go to
+        2. Click
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or Videos
+      description: If applicable, add screenshots and/or a short video to help explain the problem you've encountered.
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional info
+      description: Add any other information about the problem.

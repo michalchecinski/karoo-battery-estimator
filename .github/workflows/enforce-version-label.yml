@@ -1,0 +1,42 @@
+name: enforce version label
+
+on:
+    pull_request:
+        types:
+          - labeled
+          - unlabeled
+          - opened
+          - synchronize
+
+jobs:
+  enforce-version-label:
+    if: >
+      !contains(github.event.pull_request.labels.*.name, 'version:major')
+      && !contains(github.event.pull_request.labels.*.name, 'version:minor')
+      && !contains(github.event.pull_request.labels.*.name, 'version:patch')
+      && !contains(github.event.pull_request.labels.*.name, 'version:skip')
+      && !contains(github.event.pull_request.labels.*.name, 'renovate')
+      && !contains(github.event.pull_request.user.login, 'feature')
+      && !contains(github.event.pull_request.user.login, 'fix')
+      && !contains(github.event.pull_request.user.login, 'bug')
+      && !contains(github.event.pull_request.user.login, 'bugfix')
+    name: Enforce version label
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Check for label
+        run: |
+          echo "PR without the version label cannot be merged."
+          echo "### :x: PR without the version label cannot be merged" >> $GITHUB_STEP_SUMMARY
+          echo "Please add one of the following labels to indicate the type of release:" >> $GITHUB_STEP_SUMMARY
+          echo "- version:major" >> $GITHUB_STEP_SUMMARY
+          echo "- version:minor" >> $GITHUB_STEP_SUMMARY
+          echo "- version:patch" >> $GITHUB_STEP_SUMMARY
+          echo "- version:skip (if no release is needed)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "You can also add label to indicate type of changes:" >> $GITHUB_STEP_SUMMARY
+          echo "- feat, feature" >> $GITHUB_STEP_SUMMARY
+          echo "- fix, bug, bugfix" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "If you do not wish to include this PR in the user-facing changelog, please add the 'version:skip' or 'skip-changelog' label." >> $GITHUB_STEP_SUMMARY
+          exit 1

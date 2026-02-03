@@ -1,0 +1,16 @@
+name: Feature request
+description: Suggest a new feature or enhancement
+labels: [feature]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to suggest a new feature! You can also use the [feedback board](https://karoo-battery-estimator.sleekplan.app).
+        Please note that this form is for feature requests and enhancements only. For bug reports, please use the Bug Report issue template.
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Description
+      description: Description of the feature or enhancement you are requesting.
+    validations:
+      required: true
