@@ -1,0 +1,20 @@
+#!/bin/bash
+
+FILES=$(git diff --cached --name-only --diff-filter=ACM "*.kts")
+
+./gradlew ktlintFormat
+
+STATUS=$?
+
+if [ "$STATUS" = 0 ] ; then
+    echo "Static analysis found no problems."
+    # Add staged file changes to git
+    for file in $FILES; do
+      if test -f "$file"; then
+        git add $file
+      fi
+    done
+    exit 0
+else
+    exit 1
+fi
