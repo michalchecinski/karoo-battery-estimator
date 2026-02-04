@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "io.hammerhead.karooexttemplate"
+    namespace = "com.karoobatteryestimator"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "io.hammerhead.karooexttemplate"
+        applicationId = "com.karoobatteryestimator"
         minSdk = 23
         targetSdk = 34
         versionCode = 1
@@ -41,4 +41,5 @@ dependencies {
     implementation(libs.bundles.androidx.lifeycle)
     implementation(libs.androidx.activity.compose)
     implementation(libs.bundles.compose.ui)
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 }

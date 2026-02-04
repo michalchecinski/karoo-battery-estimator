@@ -1,11 +1,10 @@
-package io.hammerhead.karooexttemplate
+package com.karoobatteryestimator
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import io.hammerhead.karooext.KarooSystemService
-import io.hammerhead.karooexttemplate.screens.MainScreen
-import io.hammerhead.karooexttemplate.theme.AppTheme
+import com.karoobatteryestimator.screens.AppNavigation
+import com.karoobatteryestimator.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +12,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             AppTheme {
-                MainScreen()
+                AppNavigation()
             }
         }
     }
