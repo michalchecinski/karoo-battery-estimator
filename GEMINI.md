@@ -49,6 +49,7 @@ When implementing Hammerhead Karoo functionality please follow guidelines and co
 - Keeping project aligned with DRY and clean code rules.
 - Separate the business logic with app screens.
 - Keep the code logically separated. Each functionality should have it's own class.
+- All strings should not be kept in the code, but in resource files, allowing translations.
 
 ## Additional rules
 
